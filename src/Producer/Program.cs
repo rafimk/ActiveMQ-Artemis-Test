@@ -4,7 +4,7 @@ var connectionFactory = new ConnectionFactory();
 var endpoint = Endpoint.Create(host: "localhost", port: 5672, "guest", "guest");
 var connection = await connectionFactory.CreateAsync(endpoint);
 var address = "my-anycast-address";
-await using var producer = await connection.CreateProducerAsync(address, RoutingType.Anycast);
+await using var producer = await connection.CreateProducerAsync(address, RoutingType.Multicast);
 
 Console.WriteLine("Producer created.");
 Console.WriteLine($"Address: {address}");
